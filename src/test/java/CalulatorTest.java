@@ -1,13 +1,30 @@
 import com.epam.tat.module4.Calculator;
+import com.epam.tat.module4.Timeout;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CalulatorTest {
 
     private Calculator calc = new Calculator();
+    private Timeout timeout = new Timeout();
+
+    @Test
+    public void testSum(){
+        Assert.assertEquals(5.0, calc.sum(2.3, 2.7));
+    }
+
+    @Test
+    public void testSub(){
+        Assert.assertEquals(1.0, calc.sub(1.5, 0.5));
+    }
 
     @Test
     public void testMult(){
+        Assert.assertEquals(15, calc.mult(5, 3));
+    }
+
+    @Test
+    public void testMultDoubles(){
         Assert.assertEquals(11.2, calc.mult(5.6, 2));
     }
 
@@ -49,5 +66,19 @@ public class CalulatorTest {
     @Test
     public void testSin(){
         Assert.assertEquals(Math.sin(30), calc.sin(30));
+    }
+
+    @Test
+    public void testIsPositive(){
+        Assert.assertTrue(calc.isPositive(1));
+    }
+
+    @Test
+    public void testIsNegative(){
+        Assert.assertTrue(calc.isNegative(-1));
+    }
+
+    @Test void testSleep(){
+        timeout.sleep(Integer.MAX_VALUE + 1);
     }
 }
